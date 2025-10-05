@@ -2,6 +2,13 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QProgressBar>
+#include <QPushButton>
+#include <QTimer>
+#include <QRandomGenerator>
+#include <QLabel>
+
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,5 +26,21 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+    QProgressBar *tempBar;
+    QProgressBar *speedBar;
+    QProgressBar *voltageBar;
+    QPushButton *startButton;
+
+    QTimer *updateTimer;
+    void updateSensorValues();
+
+    int tempThreshold = 75;
+    int speedThreshold = 150;
+    int voltageThreshold = 12;
+
+    QLabel *alertLabel;
+
+
 };
 #endif // MAINWINDOW_H
